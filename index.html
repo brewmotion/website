@@ -28,19 +28,28 @@
       z-index: 1000;
     }
 
-    header a {
+    .logo {
+      font-weight: 700;
+      font-size: 1.5rem;
+      text-decoration: none;
+      color: #1a1a1a;
+      transition: color 0.3s ease;
+    }
+
+    .logo:hover {
+      color: #007aff;
+    }
+
+    nav a {
+      margin: 0 1rem;
       text-decoration: none;
       color: #1a1a1a;
       font-weight: 600;
       transition: color 0.3s ease;
     }
 
-    header a:hover {
+    nav a:hover {
       color: #007aff;
-    }
-
-    nav a {
-      margin: 0 1rem;
     }
 
     main {
@@ -84,6 +93,7 @@
       filter: brightness(1);
     }
 
+    /* Instagram Button unter dem Bild */
     .instagram-button {
       position: absolute;
       bottom: 8px;
@@ -120,37 +130,25 @@
   </style>
 </head>
 <body>
-
   <header>
-    <div>
-      <strong>
-        <a href="brewmotion.html">BREWMOTION</a>
-      </strong>
-    </div>
+    <a href="brewmotion.html" class="logo">BREWMOTION</a>
     <nav>
-      <a href="index.html">Startseite</a>
-      <a href="about.html">Über mich</a>
-      <a href="brewmotion.html">Was ist BREWMOTION?</a>
+      <a href="ueber.html">Über Jonas</a>
       <a href="kontakt.html">Kontakt</a>
     </nav>
   </header>
 
   <main>
     <div class="text">
-      <h1>Über Jonas Kellhammer</h1>
-      <p>
-        Seit 2021 arbeite ich selbstständig als Fotograf und Filmemacher.<br />
-        Mit einem Auge fürs Detail und einem Gespür für Atmosphäre kreiere ich emotionale Bilder und bewegte Geschichten.<br />
-        BREWMOTION ist dabei nicht nur ein Name, sondern ein Ausdruck meines kreativen Prozesses.
-      </p>
+      <h1>Über Jonas</h1>
+      <p>Jonas ist der kreative Kopf hinter BREWMOTION. Mit einer Leidenschaft für Kaffee, Design und Bewegung verbindet er verschiedene Welten zu einem einzigartigen Konzept.</p>
     </div>
     <div class="img-wrapper">
-      <img src="bild101.jpeg" alt="Jonas Kellhammer" />
-      <a class="instagram-button" href="https://instagram.com/jonasdirect" target="_blank" rel="noopener noreferrer">
-        instagram
+      <img src="jonas.jpg" alt="Jonas bei der Arbeit" />
+      <a class="instagram-button" href="https://instagram.com/jonasprofil" target="_blank" rel="noopener noreferrer">
+        Instagram
       </a>
     </div>
   </main>
-
 </body>
 </html>
