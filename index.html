@@ -24,36 +24,31 @@
       z-index: 1000;
     }
 
-    /* BREWMOTION Logo mit Mokka-Hover-Rahmen */
-    .brewmotion-logo {
+    /* Gemeinsamer Glasrahmen-Hover-Effekt */
+    .nav-item {
       position: relative;
-      padding: 0.4rem 1rem;
+      padding: 0.6rem 1rem;
       border-radius: 9999px;
       text-decoration: none;
       color: #1a1a1a;
-      font-weight: 700;
+      font-weight: 600;
       transition: all 0.3s ease;
+      display: inline-block;
     }
-    .brewmotion-logo:hover::before {
+
+    .nav-item:hover::before {
       content: "";
       position: absolute;
       inset: 0;
       border-radius: 9999px;
-      background: rgba(131, 112, 96, 0.2);
-      border: 2px solid rgba(131, 112, 96, 0.5);
+      background: rgba(173, 142, 110, 0.2); /* helleres Mokka */
+      border: 2px solid rgba(173, 142, 110, 0.5);
       backdrop-filter: blur(8px);
       z-index: -1;
     }
 
     nav a {
-      margin: 0 1rem;
-      text-decoration: none;
-      color: #1a1a1a;
-      font-weight: 600;
-      transition: color 0.3s ease;
-    }
-    nav a:hover {
-      color: #007aff;
+      margin: 0 0.5rem;
     }
 
     main {
@@ -61,16 +56,19 @@
       max-width: 1200px;
       margin: 0 auto;
     }
+
     h1 {
       margin-bottom: 2rem;
       font-weight: 700;
       font-size: 2rem;
     }
+
     .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 1.5rem;
     }
+
     .gallery img {
       width: 100%;
       border-radius: 16px;
@@ -132,6 +130,7 @@
       cursor: pointer;
       z-index: 1000;
     }
+
     footer a {
       color: #1a1a1a;
       text-decoration: none;
@@ -141,14 +140,14 @@
 <body>
   <header>
     <div>
-      <a href="brewmotion.html" class="brewmotion-logo"><strong>BREWMOTION</strong></a>
+      <a href="brewmotion.html" class="nav-item"><strong>BREWMOTION</strong></a>
     </div>
     <nav>
-      <a href="#portfolio">Portfolio</a>
-      <a href="#film">Film</a>
-      <a href="#kunden">Kunden</a>
-      <a href="about.html">Über mich</a>
-      <a href="kontakt.html">Kontakt</a>
+      <a href="#portfolio" class="nav-item">Portfolio</a>
+      <a href="#film" class="nav-item">Film</a>
+      <a href="#kunden" class="nav-item">Kunden</a>
+      <a href="about.html" class="nav-item">Über mich</a>
+      <a href="kontakt.html" class="nav-item">Kontakt</a>
     </nav>
   </header>
 
@@ -187,6 +186,7 @@
         rect.bottom <= (window.innerHeight || document.documentElement.clientHeight)
       );
     }
+
     function checkVisibility() {
       document.querySelectorAll('.gallery img').forEach(img => {
         if (isInViewport(img)) {
@@ -196,6 +196,7 @@
         }
       });
     }
+
     window.addEventListener('scroll', checkVisibility);
     window.addEventListener('resize', checkVisibility);
     window.addEventListener('load', checkVisibility);
