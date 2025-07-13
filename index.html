@@ -44,35 +44,39 @@
     }
 
     .gallery-style {
-      display: grid;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
       padding: 2rem;
-      grid-gap: 2rem;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      transition: all 0.5s ease-in-out;
     }
-    .gallery-style img {
-      width: 100%;
-      border-radius: 12px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    }
-
     .card {
+      position: relative;
       background: white;
       border-radius: 16px;
       overflow: hidden;
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-      transition: transform 0.5s ease, opacity 0.5s ease;
+      transform: rotateZ(var(--angle, 0deg)) scale(0.95);
+      transition: all 0.6s ease;
       opacity: 0;
-      transform: translateY(40px);
+      filter: blur(6px) grayscale(0.3) brightness(0.8);
     }
     .card.visible {
       opacity: 1;
-      transform: translateY(0);
+      filter: blur(0) grayscale(0) brightness(1);
+      transform: rotateZ(var(--angle, 0deg)) scale(1);
+    }
+    .card:hover {
+      filter: blur(0) grayscale(0) brightness(1);
     }
     .card img {
       width: 100%;
       height: auto;
       display: block;
+      transition: transform 0.4s ease;
+    }
+    .card:hover img {
+      transform: scale(1.05);
     }
 
     section {
@@ -91,15 +95,23 @@
       transform: translateX(-50%);
       background: var(--glass);
       backdrop-filter: blur(10px);
-      padding: 0.6rem 0.8rem;
-      border-radius: 50%;
+      padding: 0.6rem 1rem;
+      border-radius: 2rem;
       box-shadow: 0 5px 15px rgba(0,0,0,0.1);
       z-index: 999;
     }
     .insta-link img {
-      width: 24px;
-      height: 24px;
-      display: block;
+      height: 18px;
+    }
+
+    @media(max-width: 768px) {
+      .gallery-style {
+        flex-direction: column;
+        align-items: center;
+      }
+      .card {
+        width: 90%;
+      }
     }
   </style>
 </head>
@@ -108,14 +120,26 @@
     <div><strong>BREWMOTION</strong></div>
     <nav>
       <a href="#portfolio">Portfolio</a>
+      <a href="#film">Film</a>
+      <a href="#kunden">Kunden</a>
       <a href="#about">Über mich</a>
       <a href="#kontakt">Kontakt</a>
     </nav>
   </header>
 
   <section id="portfolio">
-    <div class="gallery-style">
-    </div>
+    <h2>Fotografie</h2>
+    <div class="gallery-style"></div>
+  </section>
+
+  <section id="film">
+    <h2>Filmprojekte</h2>
+    <div class="gallery-style"></div>
+  </section>
+
+  <section id="kunden">
+    <h2>Kundenprojekte</h2>
+    <div class="gallery-style"></div>
   </section>
 
   <section id="about">
@@ -134,17 +158,26 @@
   </footer>
 
   <a class="insta-link" href="https://instagram.com/jonasdirect" target="_blank">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" />
+    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Instagram_white_text_logo.png" alt="Instagram" />
   </a>
 
   <script>
-    const images = ['DSC00627_fast EXPORT.jpg', ...Array.from({ length: 16 }, (_, i) => `bild${i + 1}.jpg`)];
-    const gallery = document.querySelector('.gallery-style');
+    const sections = [
+      'portfolio', 'film', 'kunden'
+    ];
 
-    images.forEach(img => {
-      gallery.innerHTML += `
-        <div class="card"><img src="${img}" alt="${img}"/></div>
-      `;
+    const images = ['DSC00627_fast EXPORT.jpg', ...Array.from({ length: 16 }, (_, i) => `bild${i + 1}.jpg`)];
+
+    sections.forEach((sectionId, idx) => {
+      const gallery = document.querySelector(`#${sectionId} .gallery-style`);
+      images.forEach((img, i) => {
+        const angle = (i % 3 - 1) * 3; // -3, 0, 3 degrees
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.style.setProperty('--angle', `${angle}deg`);
+        card.innerHTML = `<img src="${img}" alt="${img}" />`;
+        gallery.appendChild(card);
+      });
     });
 
     const observer = new IntersectionObserver(entries => {
