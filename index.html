@@ -3,126 +3,138 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dynamisches Portfolio</title>
-  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <title>Modernes Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightbox2@2.11.4/dist/css/lightbox.min.css">
   <style>
+    :root {
+      --bg: #111;
+      --text: #f0f0f0;
+      --accent: #00f7ff;
+    }
+
     body {
-      font-family: 'Segoe UI', sans-serif;
       margin: 0;
-      padding: 0;
-      background: #fdfdfd;
-      color: #333;
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      scroll-behavior: smooth;
     }
 
     header {
-      background: #1f1f1f;
-      color: white;
-      padding: 2rem;
       text-align: center;
+      padding: 4rem 2rem;
     }
 
-    .filter-buttons {
-      text-align: center;
-      margin: 2rem 0;
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
     }
 
-    .filter-buttons button {
-      margin: 0 10px;
-      padding: 10px 20px;
-      border: none;
-      background: #333;
-      color: white;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    .filter-buttons button:hover {
-      background: #555;
+    header p {
+      font-size: 1.2rem;
+      color: #aaa;
     }
 
     .gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 20px;
-      padding: 0 2rem 3rem;
+      padding: 2rem;
+      max-width: 1200px;
+      margin: auto;
     }
 
-    .item {
-      display: none;
-      transition: transform 0.3s;
+    .gallery a {
+      display: block;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+      transition: transform 0.3s ease;
     }
 
-    .item img {
+    .gallery a:hover {
+      transform: scale(1.03);
+    }
+
+    .gallery img {
       width: 100%;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      cursor: pointer;
-      transition: transform 0.3s;
-    }
-
-    .item img:hover {
-      transform: scale(1.05);
-    }
-
-    .item.show {
+      height: auto;
       display: block;
     }
 
     footer {
       text-align: center;
-      background: #1f1f1f;
-      color: #bbb;
-      padding: 1rem;
+      padding: 2rem;
+      color: #777;
+      font-size: 0.9rem;
+    }
+
+    .toggle-darkmode {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background: var(--accent);
+      color: black;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+
+    .toggle-darkmode:hover {
+      background: #0ff;
     }
   </style>
 </head>
 <body>
+  <button class="toggle-darkmode" onclick="toggleTheme()">Dark Mode</button>
 
   <header>
-    <h1>Dynamisches Portfolio</h1>
-    <p>Mit Animationen, Filtern und modernem Look</p>
+    <h1>Mein Portfolio</h1>
+    <p>Kreative Arbeiten mit modernem Design</p>
   </header>
 
-  <section class="filter-buttons">
-    <button onclick="filterSelection('all')">Alle</button>
-    <button onclick="filterSelection('web')">Webdesign</button>
-    <button onclick="filterSelection('foto')">Fotografie</button>
-    <button onclick="filterSelection('grafik')">Grafikdesign</button>
+  <section class="gallery" data-aos="fade-up">
+    <a href="DSC00627_fast EXPORT.jpg" data-lightbox="portfolio" data-title="Mein Foto 1">
+      <img src="DSC00627_fast EXPORT.jpg" alt="Portfolio-Bild 1">
+    </a>
+    <a href="bild2.jpg" data-lightbox="portfolio" data-title="Projekt 2">
+      <img src="bild2.jpg" alt="Portfolio-Bild 2">
+    </a>
+    <a href="bild3.jpg" data-lightbox="portfolio" data-title="Projekt 3">
+      <img src="bild3.jpg" alt="Portfolio-Bild 3">
+    </a>
+    <a href="bild4.jpg" data-lightbox="portfolio" data-title="Projekt 4">
+      <img src="bild4.jpg" alt="Portfolio-Bild 4">
+    </a>
   </section>
 
-  <main class="gallery">
-    <div class="item foto show" data-aos="fade-up">
-      <img src="DSC00627_fast EXPORT.jpg" alt="Fotografie DSC00627" />
-    </div>
-    <div class="item web show" data-aos="fade-up"><img src="bild2.jpg" alt="Webprojekt 1" /></div>
-    <div class="item grafik show" data-aos="fade-up"><img src="bild3.jpg" alt="Grafik 1" /></div>
-    <div class="item web show" data-aos="fade-up"><img src="bild4.jpg" alt="Webprojekt 2" /></div>
-    <div class="item foto show" data-aos="fade-up"><img src="bild5.jpg" alt="Foto 2" /></div>
-    <div class="item grafik show" data-aos="fade-up"><img src="bild6.jpg" alt="Grafik 2" /></div>
-  </main>
-
   <footer>
-    <p>&copy; 2025 Dein Name – Portfolio mit Stil</p>
+    &copy; 2025 Dein Name – Modernes Portfolio mit Stil
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lightbox2@2.11.4/dist/js/lightbox.min.js"></script>
   <script>
     AOS.init();
 
-    function filterSelection(category) {
-      let items = document.querySelectorAll('.item');
-      items.forEach(item => {
-        if (category === 'all' || item.classList.contains(category)) {
-          item.classList.add('show');
-        } else {
-          item.classList.remove('show');
-        }
-      });
+    function toggleTheme() {
+      const root = document.documentElement;
+      const currentBg = getComputedStyle(root).getPropertyValue('--bg').trim();
+      if (currentBg === '#111') {
+        root.style.setProperty('--bg', '#fff');
+        root.style.setProperty('--text', '#111');
+        document.querySelector('.toggle-darkmode').textContent = 'Light Mode';
+      } else {
+        root.style.setProperty('--bg', '#111');
+        root.style.setProperty('--text', '#f0f0f0');
+        document.querySelector('.toggle-darkmode').textContent = 'Dark Mode';
+      }
     }
-
-    // Standardmäßig alle zeigen
-    filterSelection('all');
   </script>
 </body>
 </html>
