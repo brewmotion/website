@@ -25,7 +25,7 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(255, 255, 255, 0.8);
+      background: var(--glass);
       backdrop-filter: blur(12px);
       display: flex;
       justify-content: space-between;
@@ -42,36 +42,20 @@
     nav a:hover {
       color: var(--accent);
     }
-    .style-switcher, .nav-switcher {
-      margin: 2rem auto;
-      text-align: center;
-    }
-    .style-switcher button, .nav-switcher button {
-      margin: 0.5rem;
-      padding: 0.5rem 1rem;
-      background: var(--glass);
-      border: 1px solid #ccc;
-      backdrop-filter: blur(10px);
-      border-radius: 10px;
-      cursor: pointer;
-    }
+
     .gallery-style {
-      display: none;
+      display: grid;
       padding: 2rem;
       grid-gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       transition: all 0.5s ease-in-out;
     }
-    .gallery-style.active {
-      display: grid;
-    }
-    .grid-style {
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    }
-    .full-style img, .lightbox-style img {
+    .gallery-style img {
       width: 100%;
       border-radius: 12px;
       box-shadow: 0 10px 25px rgba(0,0,0,0.1);
     }
+
     .card {
       background: white;
       border-radius: 16px;
@@ -90,11 +74,7 @@
       height: auto;
       display: block;
     }
-    .caption {
-      padding: 1rem;
-      font-size: 0.9rem;
-      color: #555;
-    }
+
     section {
       padding: 4rem 2rem;
     }
@@ -107,15 +87,19 @@
     .insta-link {
       position: fixed;
       bottom: 20px;
-      right: 20px;
-      background: #fff;
-      color: #000;
-      padding: 0.8rem 1rem;
-      border-radius: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--glass);
+      backdrop-filter: blur(10px);
+      padding: 0.6rem 0.8rem;
+      border-radius: 50%;
       box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      font-weight: bold;
-      text-decoration: none;
       z-index: 999;
+    }
+    .insta-link img {
+      width: 24px;
+      height: 24px;
+      display: block;
     }
   </style>
 </head>
@@ -129,20 +113,9 @@
     </nav>
   </header>
 
-  <div class="nav-switcher">
-    <button onclick="switchNav('light')">Helles Menü</button>
-    <button onclick="switchNav('glass')">Glas Menü</button>
-  </div>
-
   <section id="portfolio">
-    <div class="style-switcher">
-      <button onclick="switchStyle('grid')">Grid-Ansicht</button>
-      <button onclick="switchStyle('full')">Vollbild-Ansicht</button>
-      <button onclick="switchStyle('lightbox')">Lightbox-Ansicht</button>
+    <div class="gallery-style">
     </div>
-    <div id="grid" class="gallery-style grid-style active"></div>
-    <div id="full" class="gallery-style full-style"></div>
-    <div id="lightbox" class="gallery-style lightbox-style"></div>
   </section>
 
   <section id="about">
@@ -160,42 +133,19 @@
     &copy; 2025 Jonas Kellhammer – Alle Rechte vorbehalten
   </footer>
 
-  <a class="insta-link" href="https://instagram.com/jonasdirect" target="_blank">@jonasdirect</a>
+  <a class="insta-link" href="https://instagram.com/jonasdirect" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" />
+  </a>
 
   <script>
     const images = ['DSC00627_fast EXPORT.jpg', ...Array.from({ length: 16 }, (_, i) => `bild${i + 1}.jpg`)];
-
-    const grid = document.getElementById('grid');
-    const full = document.getElementById('full');
-    const lightbox = document.getElementById('lightbox');
+    const gallery = document.querySelector('.gallery-style');
 
     images.forEach(img => {
-      grid.innerHTML += `
-        <div class="card"><img src="${img}" alt="${img}"/><div class="caption">Projekt zu ${img}</div></div>
-      `;
-      full.innerHTML += `
-        <div style="margin-bottom: 2rem;"><img src="${img}" alt="${img}"/></div>
-      `;
-      lightbox.innerHTML += `
-        <img src="${img}" alt="${img}" style="margin-bottom: 1rem; cursor: pointer;"/>
+      gallery.innerHTML += `
+        <div class="card"><img src="${img}" alt="${img}"/></div>
       `;
     });
-
-    const switchStyle = (style) => {
-      document.querySelectorAll('.gallery-style').forEach(el => el.classList.remove('active'));
-      document.getElementById(style).classList.add('active');
-    }
-
-    const switchNav = (type) => {
-      const header = document.querySelector('header');
-      if (type === 'glass') {
-        header.style.background = 'rgba(255, 255, 255, 0.3)';
-        header.style.backdropFilter = 'blur(12px)';
-      } else {
-        header.style.background = '#fff';
-        header.style.backdropFilter = 'none';
-      }
-    }
 
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
