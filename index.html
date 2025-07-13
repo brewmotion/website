@@ -1,95 +1,149 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Was ist BREWMOTION? – BREWMOTION</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
-<style>
-  body {
-    margin: 0;
-    font-family: 'Inter', sans-serif;
-    background: #f8f9fa;
-    color: #1a1a1a;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
-  header {
-    background: rgba(255 255 255 / 0.3);
-    backdrop-filter: blur(12px);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-  }
-  nav a {
-    margin: 0 1rem;
-    text-decoration: none;
-    color: #1a1a1a;
-    font-weight: 600;
-    transition: color 0.3s ease;
-  }
-  nav a:hover {
-    color: #007aff;
-  }
-  main {
-    flex: 1;
-    max-width: 900px;
-    margin: 3rem auto;
-    padding: 0 1rem;
-  }
-  h1 {
-    font-weight: 700;
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    text-align: center;
-  }
-  p {
-    font-size: 1.2rem;
-    line-height: 1.6;
-    max-width: 720px;
-    margin: 0 auto;
-    text-align: center;
-  }
-  footer {
-    text-align: center;
-    padding: 1rem 0;
-    background: rgba(255 255 255 / 0.3);
-    backdrop-filter: blur(12px);
-    font-weight: 600;
-  }
-  footer a {
-    color: #1a1a1a;
-    text-decoration: none;
-  }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BREWMOTION – Jonas Kellhammer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: #f8f9fa;
+      color: #1a1a1a;
+      overflow-x: hidden;
+    }
+    header {
+      background: rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(12px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    nav a {
+      margin: 0 1rem;
+      text-decoration: none;
+      color: #1a1a1a;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: #007aff;
+    }
+    main {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+    }
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      flex: 1 1 calc(25% - 1rem);
+      max-width: calc(25% - 1rem);
+      min-width: 200px;
+      border-radius: 16px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      filter: brightness(0.9);
+    }
+    .gallery-item img {
+      width: 100%;
+      display: block;
+      border-radius: 16px;
+      filter: blur(8px) brightness(0.8);
+      transition: filter 0.5s ease;
+    }
+    .gallery-item:hover img {
+      filter: blur(0) brightness(1);
+    }
+    .instagram-footer {
+      position: fixed;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(12px);
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+      font-weight: 600;
+      color: #1a1a1a;
+      cursor: pointer;
+      user-select: none;
+      font-family: 'Inter', sans-serif;
+      transition: background-color 0.3s ease;
+      text-decoration: none;
+    }
+    .instagram-footer:hover {
+      background: rgba(0, 122, 255, 0.2);
+      color: #007aff;
+    }
+
+    @media (max-width: 900px) {
+      .gallery-item {
+        flex: 1 1 calc(50% - 1rem);
+        max-width: calc(50% - 1rem);
+      }
+    }
+    @media (max-width: 480px) {
+      .gallery-item {
+        flex: 1 1 100%;
+        max-width: 100%;
+      }
+      header {
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 1rem;
+      }
+      nav a {
+        margin: 0 0.5rem;
+      }
+    }
+  </style>
 </head>
 <body>
-<header>
-  <div><strong><a href="index.html" style="color:#1a1a1a; text-decoration:none;">BREWMOTION</a></strong></div>
-  <nav>
-    <a href="index.html">Startseite</a>
-    <a href="about.html">Über mich</a>
-    <a href="brewmotion.html">Was ist BREWMOTION?</a>
-    <a href="kontakt.html">Kontakt</a>
-  </nav>
-</header>
+  <header>
+    <div><strong>BREWMOTION</strong></div>
+    <nav>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#film">Film</a>
+      <a href="#kunden">Kunden</a>
+      <a href="about.html">Über mich</a>
+      <a href="kontakt.html">Kontakt</a>
+    </nav>
+  </header>
 
-<main>
-  <h1>Was ist BREWMOTION?</h1>
-  <p>
-    BREWMOTION ist das kreative Projekt von Jonas Kellhammer – einem Fotografen und Filmemacher, der durch seine Arbeit Geschichten mit Bewegung, Licht und Emotionen erzählt. Der Name steht für den fließenden Prozess, Bilder und Filme lebendig und atmosphärisch zu gestalten – stets mit einem Fokus auf Ästhetik und Authentizität.<br><br>
-    BREWMOTION verbindet Technik, Leidenschaft und künstlerischen Anspruch, um visuelle Projekte entstehen zu lassen, die beeindrucken und berühren. Ob Fotoshootings, Filmproduktionen oder kreative Konzepte – BREWMOTION steht für bewegende Momente in bewegten Bildern.
-  </p>
-</main>
+  <main>
+    <section id="portfolio" class="gallery">
+      <div class="gallery-item"><img src="DSC00627_fast EXPORT.jpg" alt="Bild 0" loading="lazy" /></div>
+      <div class="gallery-item"><img src="bild1.jpg" alt="Bild 1" loading="lazy" /></div>
+      <div class="gallery-item"><img src="bild2.jpg" alt="Bild 2" loading="lazy" /></div>
+      <div class="gallery-item"><img src="bild3.jpg" alt="Bild 3" loading="lazy" /></div>
+      <div class="gallery-item"><img src="bild4.jpg" alt="Bild 4" loading="lazy" /></div>
+      <div class="gallery-item"><img src="bild5.jpg" alt="Bild 5" loading="lazy" /></div>
+      <div class="gallery-item"><img src="bild6.jpg" alt="Bild 6" loading="lazy" /></div>
+      <div class="gallery-item"><img src="bild7.jpg" alt="Bild 7" loading="lazy" /></div>
+      <div class="gallery-item"><img src="bild8.jpg" alt="Bild 8" loading="lazy" /></div>
+      <div class="gallery-item"><img src="bild9.jpg" alt="Bild 9" loading="lazy" /></div>
+      <div class="gallery-item"><img src="bild10.jpg" alt="Bild 10" loading="lazy" /></div>
+      <div class="gallery-item"><img src="bild11.jpg" alt="Bild 11" loading="lazy" /></div>
+      <div class="gallery-item"><img src="bild12.jpg" alt="Bild 12" loading="lazy" /></div>
+      <div class="gallery-item"><img src="bild13.jpg" alt="Bild 13" loading="lazy" /></div>
+      <div class="gallery-item"><img src="bild14.jpg" alt="Bild 14" loading="lazy" /></div>
+      <div class="gallery-item"><img src="bild15.jpg" alt="Bild 15" loading="lazy" /></div>
+      <div class="gallery-item"><img src="bild16.jpg" alt="Bild 16" loading="lazy" /></div>
+    </section>
+  </main>
 
-<footer>
-  <a href="https://instagram.com/jonasdirect" target="_blank" rel="noopener noreferrer">instagram</a>
-</footer>
-
+  <a href="https://instagram.com/jonasdirect" target="_blank" rel="noopener" class="instagram-footer">instagram</a>
 </body>
 </html>
