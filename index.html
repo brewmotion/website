@@ -3,27 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BREWMOTION – Portfolio</title>
+  <title>BREWMOTION – Jonas Kellhammer</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #f6f6f6;
+      --bg: #f8f9fa;
       --text: #1a1a1a;
       --accent: #007aff;
+      --glass: rgba(255, 255, 255, 0.3);
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
+    * {box-sizing: border-box; margin: 0; padding: 0;}
     body {
       font-family: 'Inter', sans-serif;
       background: var(--bg);
       color: var(--text);
       scroll-behavior: smooth;
-      overflow-x: hidden;
     }
 
     header {
@@ -38,21 +33,45 @@
       padding: 1rem 2rem;
       border-bottom: 1px solid #ddd;
     }
-
     nav a {
       margin: 0 1rem;
       text-decoration: none;
       color: var(--text);
       font-weight: 600;
     }
-
-    main {
-      padding: 2rem;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
+    nav a:hover {
+      color: var(--accent);
     }
-
+    .style-switcher, .nav-switcher {
+      margin: 2rem auto;
+      text-align: center;
+    }
+    .style-switcher button, .nav-switcher button {
+      margin: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: var(--glass);
+      border: 1px solid #ccc;
+      backdrop-filter: blur(10px);
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .gallery-style {
+      display: none;
+      padding: 2rem;
+      grid-gap: 2rem;
+      transition: all 0.5s ease-in-out;
+    }
+    .gallery-style.active {
+      display: grid;
+    }
+    .grid-style {
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+    .full-style img, .lightbox-style img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
     .card {
       background: white;
       border-radius: 16px;
@@ -62,36 +81,41 @@
       opacity: 0;
       transform: translateY(40px);
     }
-
     .card.visible {
       opacity: 1;
       transform: translateY(0);
     }
-
     .card img {
       width: 100%;
       height: auto;
       display: block;
     }
-
-    .card .caption {
+    .caption {
       padding: 1rem;
       font-size: 0.9rem;
       color: #555;
     }
-
+    section {
+      padding: 4rem 2rem;
+    }
     footer {
       text-align: center;
       padding: 4rem 1rem;
       font-size: 0.9rem;
       color: #999;
     }
-
-    @media (max-width: 600px) {
-      nav a {
-        margin: 0 0.5rem;
-        font-size: 0.9rem;
-      }
+    .insta-link {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #fff;
+      color: #000;
+      padding: 0.8rem 1rem;
+      border-radius: 20px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      font-weight: bold;
+      text-decoration: none;
+      z-index: 999;
     }
   </style>
 </head>
@@ -105,62 +129,85 @@
     </nav>
   </header>
 
-  <section id="portfolio" style="margin-top:2rem">
-    <main id="gallery">
-      <!-- Bilder werden hier dynamisch eingefügt -->
-    </main>
+  <div class="nav-switcher">
+    <button onclick="switchNav('light')">Helles Menü</button>
+    <button onclick="switchNav('glass')">Glas Menü</button>
+  </div>
+
+  <section id="portfolio">
+    <div class="style-switcher">
+      <button onclick="switchStyle('grid')">Grid-Ansicht</button>
+      <button onclick="switchStyle('full')">Vollbild-Ansicht</button>
+      <button onclick="switchStyle('lightbox')">Lightbox-Ansicht</button>
+    </div>
+    <div id="grid" class="gallery-style grid-style active"></div>
+    <div id="full" class="gallery-style full-style"></div>
+    <div id="lightbox" class="gallery-style lightbox-style"></div>
   </section>
 
-  <section id="about" style="padding: 4rem 2rem; max-width: 800px; margin: 0 auto;">
-    <h2 style="margin-bottom: 1rem;">Über mich</h2>
-    <p>
-      Willkommen auf meiner Portfolioseite. Ich bin Jonas Kellhammer, ein kreativer Kopf mit einem Gespür für Ästhetik, Bewegung und moderne Gestaltung. In meinen Arbeiten kombiniere ich Design, Fotografie und digitale Technik zu einer einzigartigen visuellen Sprache.
-    </p>
+  <section id="about">
+    <h2>Über Jonas</h2>
+    <p>Ich bin Jonas Kellhammer – seit 2021 als selbstständiger Fotograf und Filmemacher unter dem Label BREWMOTION tätig. Meine Arbeit lebt von Ästhetik, Bewegung und Präzision. Ich erzähle visuelle Geschichten, die bleiben.</p>
   </section>
 
-  <section id="kontakt" style="padding: 4rem 2rem; text-align: center;">
-    <h2 style="margin-bottom: 1rem;">Kontakt</h2>
-    <p>
-      Du möchtest mit mir zusammenarbeiten oder hast Fragen? Dann schreib mir gerne eine Nachricht.
-    </p>
-    <p style="margin-top: 1rem; color: #007aff; font-weight: 600;">
-      jonas@kellhammer.com
-    </p>
+  <section id="kontakt">
+    <h2>Kontakt</h2>
+    <p>Du möchtest mit mir arbeiten oder hast Fragen zu einem Projekt? Schreib mir gerne!</p>
+    <p style="margin-top: 1rem; font-weight: bold;">jonas@kellhammer.com</p>
   </section>
 
   <footer>
     &copy; 2025 Jonas Kellhammer – Alle Rechte vorbehalten
   </footer>
 
-  <script>
-    const images = [
-      'DSC00627_fast EXPORT.jpg',
-      ...Array.from({length: 16}, (_, i) => `bild${i + 1}.jpg`)
-    ];
+  <a class="insta-link" href="https://instagram.com/jonasdirect" target="_blank">@jonasdirect</a>
 
-    const gallery = document.getElementById('gallery');
+  <script>
+    const images = ['DSC00627_fast EXPORT.jpg', ...Array.from({ length: 16 }, (_, i) => `bild${i + 1}.jpg`)];
+
+    const grid = document.getElementById('grid');
+    const full = document.getElementById('full');
+    const lightbox = document.getElementById('lightbox');
+
     images.forEach(img => {
-      const card = document.createElement('div');
-      card.className = 'card';
-      card.innerHTML = `
-        <img src="${img}" alt="Bild ${img}" loading="lazy">
-        <div class="caption">Bildbeschreibung zu ${img}</div>
+      grid.innerHTML += `
+        <div class="card"><img src="${img}" alt="${img}"/><div class="caption">Projekt zu ${img}</div></div>
       `;
-      gallery.appendChild(card);
+      full.innerHTML += `
+        <div style="margin-bottom: 2rem;"><img src="${img}" alt="${img}"/></div>
+      `;
+      lightbox.innerHTML += `
+        <img src="${img}" alt="${img}" style="margin-bottom: 1rem; cursor: pointer;"/>
+      `;
     });
 
-    // Intersection Observer für Scrollanimation
+    const switchStyle = (style) => {
+      document.querySelectorAll('.gallery-style').forEach(el => el.classList.remove('active'));
+      document.getElementById(style).classList.add('active');
+    }
+
+    const switchNav = (type) => {
+      const header = document.querySelector('header');
+      if (type === 'glass') {
+        header.style.background = 'rgba(255, 255, 255, 0.3)';
+        header.style.backdropFilter = 'blur(12px)';
+      } else {
+        header.style.background = '#fff';
+        header.style.backdropFilter = 'none';
+      }
+    }
+
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
         }
       });
-    }, {
-      threshold: 0.1
-    });
+    }, { threshold: 0.1 });
 
-    document.querySelectorAll('.card').forEach(card => observer.observe(card));
+    setTimeout(() => {
+      document.querySelectorAll('.card').forEach(card => observer.observe(card));
+    }, 500);
   </script>
 </body>
 </html>
