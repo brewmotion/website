@@ -3,18 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Apple Style Portfolio</title>
+  <title>BREWMOTION Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
   <style>
-    /* Apple iOS26 Glassmorphism Portfolio Styles */
     @import url('https://fonts.googleapis.com/css2?family=SF+Pro+Display:ital,wght@0,400;0,600;1,400&display=swap');
     :root {
       --bg: linear-gradient(135deg, #f0f3f5, #d9e2ec);
-      --glass-bg: rgba(255, 255, 255, 0.5);
-      --glass-shadow: rgba(255, 255, 255, 0.6);
+      --glass-bg: rgba(255, 255, 255, 0.25);
+      --glass-shadow: rgba(255, 255, 255, 0.65);
       --text-color: #1d1d1f;
       --accent: #007aff;
-      --blur: 20px;
+      --blur: 25px;
     }
 
     * {
@@ -38,100 +37,85 @@
 
     header {
       text-align: center;
-      margin-bottom: 2rem;
+      margin-bottom: 3rem;
       user-select: none;
-    }
-
-    header h1 {
       font-weight: 600;
-      font-size: 3rem;
-      margin: 0;
-      letter-spacing: -0.03em;
-    }
-
-    header p {
-      font-weight: 400;
-      font-size: 1.25rem;
-      color: #4a4a4a;
-      margin-top: 0.5rem;
+      font-size: 3.5rem;
+      letter-spacing: -0.05em;
+      background: var(--glass-bg);
+      border-radius: 36px;
+      padding: 1rem 3rem;
+      box-shadow:
+        0 8px 32px 0 rgba(31, 38, 135, 0.25);
+      backdrop-filter: blur(var(--blur));
+      -webkit-backdrop-filter: blur(var(--blur));
+      color: var(--text-color);
+      user-select: none;
+      cursor: default;
+      max-width: max-content;
+      margin-inline: auto;
     }
 
     .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
-      gap: 2rem;
+      gap: 2.5rem;
       width: 100%;
       max-width: 1200px;
     }
 
     .card {
-      position: relative;
       background: var(--glass-bg);
-      border-radius: 24px;
-      padding: 1rem;
+      border-radius: 32px;
+      padding: 0;
       box-shadow:
-        0 8px 32px 0 rgba(31, 38, 135, 0.37),
+        0 8px 48px 0 rgba(31, 38, 135, 0.2),
         0 0 0 1px var(--glass-shadow);
       backdrop-filter: blur(var(--blur));
       -webkit-backdrop-filter: blur(var(--blur));
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
       cursor: pointer;
       overflow: hidden;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
       display: flex;
-      flex-direction: column;
+      justify-content: center;
       align-items: center;
     }
 
     .card:hover, .card:focus-within {
-      transform: translateY(-10px);
+      transform: translateY(-12px);
       box-shadow:
-        0 12px 48px 0 rgba(31, 38, 135, 0.5),
-        0 0 0 1.5px var(--accent);
+        0 16px 64px 0 rgba(31, 38, 135, 0.35),
+        0 0 0 2px var(--accent);
       outline: none;
     }
 
     .card img {
       width: 100%;
-      border-radius: 18px;
+      height: auto;
+      display: block;
+      border-radius: 32px;
       object-fit: cover;
       aspect-ratio: 4 / 3;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-      transition: transform 0.3s ease;
-      margin-bottom: 1rem;
+      transition: transform 0.4s ease;
     }
 
     .card:hover img {
-      transform: scale(1.05);
-    }
-
-    .card h3 {
-      font-weight: 600;
-      margin: 0 0 0.5rem 0;
-      font-size: 1.25rem;
-      color: var(--text-color);
-      user-select: none;
-    }
-
-    .card p {
-      font-weight: 400;
-      font-size: 1rem;
-      color: #555;
-      margin: 0;
-      user-select: none;
-      text-align: center;
+      transform: scale(1.06);
     }
 
     footer {
-      margin-top: 3rem;
-      font-size: 0.9rem;
-      color: #777;
+      margin-top: 4rem;
+      font-weight: 400;
+      font-size: 1rem;
+      color: #555;
       user-select: none;
+      text-align: center;
     }
 
     @media (prefers-color-scheme: dark) {
       :root {
         --bg: linear-gradient(135deg, #1c1c1e, #2c2c2e);
-        --glass-bg: rgba(28, 28, 30, 0.4);
+        --glass-bg: rgba(28, 28, 30, 0.3);
         --glass-shadow: rgba(255, 255, 255, 0.1);
         --text-color: #eee;
         --accent: #0a84ff;
@@ -142,20 +126,23 @@
         color: var(--text-color);
       }
 
+      header {
+        background: var(--glass-bg);
+        color: var(--text-color);
+        box-shadow:
+          0 8px 32px 0 rgba(10, 132, 255, 0.3);
+      }
+
       .card {
         box-shadow:
-          0 8px 32px 0 rgba(10, 132, 255, 0.37),
+          0 8px 48px 0 rgba(10, 132, 255, 0.25),
           0 0 0 1px var(--glass-shadow);
       }
 
       .card:hover, .card:focus-within {
         box-shadow:
-          0 12px 48px 0 rgba(10, 132, 255, 0.5),
-          0 0 0 1.5px var(--accent);
-      }
-
-      .card p {
-        color: #bbb;
+          0 16px 64px 0 rgba(10, 132, 255, 0.4),
+          0 0 0 2px var(--accent);
       }
 
       footer {
@@ -165,37 +152,23 @@
   </style>
 </head>
 <body>
-  <header>
-    <h1>Mein Apple Style Portfolio</h1>
-    <p>Glas, Schatten & Eleganz – inspiriert von iOS 26</p>
-  </header>
+  <header>BREWMOTION</header>
 
-  <main class="gallery" role="list">
+  <main class="gallery" role="list" aria-label="Portfolio Galerie">
     <article class="card" tabindex="0" role="listitem" aria-label="Projektbild 1">
       <img src="DSC00627_fast EXPORT.jpg" alt="Foto DSC00627" loading="lazy" />
-      <h3>Foto DSC00627</h3>
-      <p>Mein cooles Foto im Glasstil.</p>
     </article>
     <article class="card" tabindex="0" role="listitem" aria-label="Projektbild 2">
-      <img src="bild2.jpg" alt="Webdesign Projekt" loading="lazy" />
-      <h3>Webdesign Projekt</h3>
-      <p>Modernes, cleanes Webprojekt.</p>
+      <img src="bild2.jpg" alt="Projektbild 2" loading="lazy" />
     </article>
     <article class="card" tabindex="0" role="listitem" aria-label="Projektbild 3">
-      <img src="bild3.jpg" alt="Grafikdesign" loading="lazy" />
-      <h3>Grafikdesign</h3>
-      <p>Farbige und klare Grafiken.</p>
+      <img src="bild3.jpg" alt="Projektbild 3" loading="lazy" />
     </article>
     <article class="card" tabindex="0" role="listitem" aria-label="Projektbild 4">
-      <img src="bild4.jpg" alt="Weiteres Projekt" loading="lazy" />
-      <h3>Weiteres Projekt</h3>
-      <p>Vielseitige kreative Arbeiten.</p>
+      <img src="bild4.jpg" alt="Projektbild 4" loading="lazy" />
     </article>
   </main>
 
-  <footer>
-    &copy; 2025 Dein Name – Apple Style Portfolio
-  </footer>
+  <footer>made by Jonas Kellhammer</footer>
 </body>
 </html>
-
