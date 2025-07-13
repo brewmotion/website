@@ -1,105 +1,65 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Über Jonas – BREWMOTION</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
-<style>
-body {
-margin: 0;
-font-family: 'Inter', sans-serif;
-background: #f8f9fa;
-color: #1a1a1a;
-min-height: 100vh;
-display: flex;
-flex-direction: column;
-}
-header {
-background: rgba(255 255 255 / 0.3);
-backdrop-filter: blur(12px);
-display: flex;
-justify-content: space-between;
-align-items: center;
-padding: 1rem 2rem;
-position: sticky;
-top: 0;
-z-index: 1000;
-}
-nav a {
-margin: 0 1rem;
-text-decoration: none;
-color: #1a1a1a;
-font-weight: 600;
-transition: color 0.3s ease;
-}
-nav a:hover {
-color: #007aff;
-}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BREWMOTION – Jonas Kellhammer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: #f8f9fa;
+      color: #1a1a1a;
+    }
+    header {
+      background: rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(12px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    nav a {
+      margin: 0 1rem;
+      text-decoration: none;
+      color: #1a1a1a;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: #007aff;
+    }
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      nav a {
+        margin: 0 0.5rem;
+      }
+    }
+    /* Hier kannst du deinen bisherigen Style für die Hauptseite ergänzen */
+  </style>
+</head>
+<body>
 
-main {
-flex: 1;
-padding: 2rem;
-max-width: 900px;
-margin: 0 auto;
-display: flex;
-gap: 2rem;
-align-items: center;
-}
-.text {
-flex: 1;
-font-size: 1.1rem;
-line-height: 1.5;
-}
-.text h1 {
-margin-bottom: 1rem;
-font-weight: 700;
-font-size: 2rem;
-}
-.img-wrapper {
-position: relative;
-flex-shrink: 0;
-max-width: 300px;
-}
-.img-wrapper img {
-width: 100%;
-border-radius: 16px;
-box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-filter: brightness(0.7);
-transition: filter 0.4s ease;
-display: block;
-}
-.img-wrapper img:hover {
-filter: brightness(1);
-}
+<header>
+  <div><strong>BREWMOTION</strong></div>
+  <nav>
+    <a href="index.html#portfolio">Portfolio</a>
+    <a href="index.html#film">Film</a>
+    <a href="index.html#kunden">Kunden</a>
+    <a href="about.html">Über mich</a>
+    <a href="kontakt.html">Kontakt</a>
+  </nav>
+</header>
 
-/* Instagram Button unter dem Bild */
-.instagram-button {
-position: absolute;
-bottom: 8px;
-left: 50%;
-transform: translateX(-50%);
-background: rgba(255 255 255 / 0.3);
-backdrop-filter: blur(12px);
-border-radius: 9999px;
-padding: 0.4rem 1rem;
-font-weight: 600;
-font-size: 1rem;
-color: #1a1a1a;
-text-decoration: none;
-box-shadow: 0 0 10px rgba(0,0,0,0.1);
-transition: background 0.3s ease;
-}
-.instagram-button:hover {
-background: rgba(0 122 255 / 0.8);
-color: white;
-}
+<!-- Hier kommt der restliche Hauptseiten-Content -->
 
-@media (max-width: 768px) {
-main {
-flex-direction: column;
-text-align: center;
-}
-.img-wrapper {
-margin-top: 1.5rem;
-max-width: 90vw;
+</body>
+</html>
+
