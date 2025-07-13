@@ -2,139 +2,200 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Modernes Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightbox2@2.11.4/dist/css/lightbox.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Apple Style Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
   <style>
+    /* Apple iOS26 Glassmorphism Portfolio Styles */
+    @import url('https://fonts.googleapis.com/css2?family=SF+Pro+Display:ital,wght@0,400;0,600;1,400&display=swap');
     :root {
-      --bg: #111;
-      --text: #f0f0f0;
-      --accent: #00f7ff;
+      --bg: linear-gradient(135deg, #f0f3f5, #d9e2ec);
+      --glass-bg: rgba(255, 255, 255, 0.5);
+      --glass-shadow: rgba(255, 255, 255, 0.6);
+      --text-color: #1d1d1f;
+      --accent: #007aff;
+      --blur: 20px;
+    }
+
+    * {
+      box-sizing: border-box;
     }
 
     body {
       margin: 0;
-      font-family: 'Inter', sans-serif;
       background: var(--bg);
-      color: var(--text);
-      scroll-behavior: smooth;
+      font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+        Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      color: var(--text-color);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 3rem 1rem;
     }
 
     header {
       text-align: center;
-      padding: 4rem 2rem;
+      margin-bottom: 2rem;
+      user-select: none;
     }
 
     header h1 {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
+      font-weight: 600;
+      font-size: 3rem;
+      margin: 0;
+      letter-spacing: -0.03em;
     }
 
     header p {
-      font-size: 1.2rem;
-      color: #aaa;
+      font-weight: 400;
+      font-size: 1.25rem;
+      color: #4a4a4a;
+      margin-top: 0.5rem;
     }
 
     .gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-      padding: 2rem;
-      max-width: 1200px;
-      margin: auto;
-    }
-
-    .gallery a {
-      display: block;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-      transition: transform 0.3s ease;
-    }
-
-    .gallery a:hover {
-      transform: scale(1.03);
-    }
-
-    .gallery img {
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+      gap: 2rem;
       width: 100%;
-      height: auto;
-      display: block;
+      max-width: 1200px;
+    }
+
+    .card {
+      position: relative;
+      background: var(--glass-bg);
+      border-radius: 24px;
+      padding: 1rem;
+      box-shadow:
+        0 8px 32px 0 rgba(31, 38, 135, 0.37),
+        0 0 0 1px var(--glass-shadow);
+      backdrop-filter: blur(var(--blur));
+      -webkit-backdrop-filter: blur(var(--blur));
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .card:hover, .card:focus-within {
+      transform: translateY(-10px);
+      box-shadow:
+        0 12px 48px 0 rgba(31, 38, 135, 0.5),
+        0 0 0 1.5px var(--accent);
+      outline: none;
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 18px;
+      object-fit: cover;
+      aspect-ratio: 4 / 3;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+      transition: transform 0.3s ease;
+      margin-bottom: 1rem;
+    }
+
+    .card:hover img {
+      transform: scale(1.05);
+    }
+
+    .card h3 {
+      font-weight: 600;
+      margin: 0 0 0.5rem 0;
+      font-size: 1.25rem;
+      color: var(--text-color);
+      user-select: none;
+    }
+
+    .card p {
+      font-weight: 400;
+      font-size: 1rem;
+      color: #555;
+      margin: 0;
+      user-select: none;
+      text-align: center;
     }
 
     footer {
-      text-align: center;
-      padding: 2rem;
-      color: #777;
+      margin-top: 3rem;
       font-size: 0.9rem;
+      color: #777;
+      user-select: none;
     }
 
-    .toggle-darkmode {
-      position: fixed;
-      top: 1rem;
-      right: 1rem;
-      background: var(--accent);
-      color: black;
-      border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 20px;
-      cursor: pointer;
-      font-weight: 600;
-      transition: background 0.3s;
-    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: linear-gradient(135deg, #1c1c1e, #2c2c2e);
+        --glass-bg: rgba(28, 28, 30, 0.4);
+        --glass-shadow: rgba(255, 255, 255, 0.1);
+        --text-color: #eee;
+        --accent: #0a84ff;
+      }
 
-    .toggle-darkmode:hover {
-      background: #0ff;
+      body {
+        background: var(--bg);
+        color: var(--text-color);
+      }
+
+      .card {
+        box-shadow:
+          0 8px 32px 0 rgba(10, 132, 255, 0.37),
+          0 0 0 1px var(--glass-shadow);
+      }
+
+      .card:hover, .card:focus-within {
+        box-shadow:
+          0 12px 48px 0 rgba(10, 132, 255, 0.5),
+          0 0 0 1.5px var(--accent);
+      }
+
+      .card p {
+        color: #bbb;
+      }
+
+      footer {
+        color: #aaa;
+      }
     }
   </style>
 </head>
 <body>
-  <button class="toggle-darkmode" onclick="toggleTheme()">Dark Mode</button>
-
   <header>
-    <h1>Mein Portfolio</h1>
-    <p>Kreative Arbeiten mit modernem Design</p>
+    <h1>Mein Apple Style Portfolio</h1>
+    <p>Glas, Schatten & Eleganz – inspiriert von iOS 26</p>
   </header>
 
-  <section class="gallery" data-aos="fade-up">
-    <a href="DSC00627_fast EXPORT.jpg" data-lightbox="portfolio" data-title="Mein Foto 1">
-      <img src="DSC00627_fast EXPORT.jpg" alt="Portfolio-Bild 1">
-    </a>
-    <a href="bild2.jpg" data-lightbox="portfolio" data-title="Projekt 2">
-      <img src="bild2.jpg" alt="Portfolio-Bild 2">
-    </a>
-    <a href="bild3.jpg" data-lightbox="portfolio" data-title="Projekt 3">
-      <img src="bild3.jpg" alt="Portfolio-Bild 3">
-    </a>
-    <a href="bild4.jpg" data-lightbox="portfolio" data-title="Projekt 4">
-      <img src="bild4.jpg" alt="Portfolio-Bild 4">
-    </a>
-  </section>
+  <main class="gallery" role="list">
+    <article class="card" tabindex="0" role="listitem" aria-label="Projektbild 1">
+      <img src="DSC00627_fast EXPORT.jpg" alt="Foto DSC00627" loading="lazy" />
+      <h3>Foto DSC00627</h3>
+      <p>Mein cooles Foto im Glasstil.</p>
+    </article>
+    <article class="card" tabindex="0" role="listitem" aria-label="Projektbild 2">
+      <img src="bild2.jpg" alt="Webdesign Projekt" loading="lazy" />
+      <h3>Webdesign Projekt</h3>
+      <p>Modernes, cleanes Webprojekt.</p>
+    </article>
+    <article class="card" tabindex="0" role="listitem" aria-label="Projektbild 3">
+      <img src="bild3.jpg" alt="Grafikdesign" loading="lazy" />
+      <h3>Grafikdesign</h3>
+      <p>Farbige und klare Grafiken.</p>
+    </article>
+    <article class="card" tabindex="0" role="listitem" aria-label="Projektbild 4">
+      <img src="bild4.jpg" alt="Weiteres Projekt" loading="lazy" />
+      <h3>Weiteres Projekt</h3>
+      <p>Vielseitige kreative Arbeiten.</p>
+    </article>
+  </main>
 
   <footer>
-    &copy; 2025 Dein Name – Modernes Portfolio mit Stil
+    &copy; 2025 Dein Name – Apple Style Portfolio
   </footer>
-
-  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/lightbox2@2.11.4/dist/js/lightbox.min.js"></script>
-  <script>
-    AOS.init();
-
-    function toggleTheme() {
-      const root = document.documentElement;
-      const currentBg = getComputedStyle(root).getPropertyValue('--bg').trim();
-      if (currentBg === '#111') {
-        root.style.setProperty('--bg', '#fff');
-        root.style.setProperty('--text', '#111');
-        document.querySelector('.toggle-darkmode').textContent = 'Light Mode';
-      } else {
-        root.style.setProperty('--bg', '#111');
-        root.style.setProperty('--text', '#f0f0f0');
-        document.querySelector('.toggle-darkmode').textContent = 'Dark Mode';
-      }
-    }
-  </script>
 </body>
 </html>
+
