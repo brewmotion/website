@@ -3,10 +3,9 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>BREWMOTION – Portfolio von Jonas Kellhammer</title>
+<title>Über Jonas – BREWMOTION</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
 <style>
-  /* Grundstil */
   body {
     margin: 0;
     font-family: 'Inter', sans-serif;
@@ -17,7 +16,6 @@
     flex-direction: column;
   }
 
-  /* Menüleiste im Glas-Stil */
   header {
     background: rgba(255 255 255 / 0.3);
     backdrop-filter: blur(12px);
@@ -42,101 +40,79 @@
 
   main {
     flex: 1;
-    max-width: 1100px;
-    margin: 3rem auto 6rem;
+    max-width: 900px;
+    margin: 3rem auto;
     padding: 0 1rem;
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
-    gap: 1.5rem;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
   }
 
-  /* Bilder mit leichtem Milchglas Effekt */
-  .image-wrapper {
+  .text {
+    flex: 1;
+    font-size: 1.1rem;
+    line-height: 1.5;
+  }
+  .text h1 {
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  .img-wrapper {
     position: relative;
-    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .img-wrapper img {
+    max-width: 320px;
     border-radius: 16px;
-    cursor: pointer;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-  }
-  .image-wrapper img {
-    width: 100%;
-    height: auto;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
     display: block;
-    filter: grayscale(10%) brightness(85%);
-    transition: filter 0.5s ease;
-    user-select: none;
-  }
-  /* Für Desktop: kreisförmiger Bereich um Maus sichtbar */
-  .image-wrapper:hover img {
-    filter: grayscale(0%) brightness(100%);
-    transition: filter 0.3s ease;
-  }
-  /* Kreisförmiger Maus-Spot */
-  .image-wrapper::before {
-    content: '';
-    position: absolute;
-    pointer-events: none;
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    box-shadow: 0 0 80px 50px rgba(255 255 255 / 0.6);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    mix-blend-mode: screen;
-  }
-  .image-wrapper:hover::before {
-    opacity: 1;
   }
 
-  /* Footer mit Instagram */
-  footer {
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
+  /* Instagram Button unten rechts auf Bild */
+  .instagram-button {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
     background: rgba(255 255 255 / 0.3);
     backdrop-filter: blur(12px);
+    padding: 6px 14px;
     border-radius: 30px;
-    padding: 0.5rem 1.5rem;
     font-weight: 600;
-    font-size: 1.1rem;
+    font-size: 0.9rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     cursor: pointer;
     user-select: none;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
     transition: background 0.3s ease;
   }
-  footer:hover {
+  .instagram-button:hover {
     background: rgba(255 255 255 / 0.5);
   }
-  footer a {
-    text-decoration: none;
+  .instagram-button a {
     color: #1a1a1a;
+    text-decoration: none;
   }
 
-  /* Responsive mobile: Effekt soll ausgeblendet werden, Bilder normal */
+  /* Responsive */
   @media (max-width: 768px) {
     main {
-      grid-template-columns: 1fr 1fr;
+      flex-direction: column;
+      margin: 2rem 1rem;
+      text-align: center;
     }
-    .image-wrapper img {
-      filter: none !important;
-      transition: none !important;
+    .img-wrapper {
+      margin-top: 2rem;
     }
-    .image-wrapper::before {
-      display: none !important;
-    }
-  }
-  @media (max-width: 480px) {
-    main {
-      grid-template-columns: 1fr;
+    .instagram-button {
+      bottom: 10px;
+      right: 10px;
     }
   }
 </style>
 </head>
 <body>
+
 <header>
   <div><strong><a href="index.html" style="color:#1a1a1a; text-decoration:none;">BREWMOTION</a></strong></div>
   <nav>
@@ -148,28 +124,17 @@
 </header>
 
 <main>
-  <div class="image-wrapper"><img src="DSC00627_fast EXPORT.jpg" alt="Bild 1" loading="lazy" /></div>
-  <div class="image-wrapper"><img src="bild1.jpg" alt="Bild 2" loading="lazy" /></div>
-  <div class="image-wrapper"><img src="bild2.jpg" alt="Bild 3" loading="lazy" /></div>
-  <div class="image-wrapper"><img src="bild3.jpg" alt="Bild 4" loading="lazy" /></div>
-  <div class="image-wrapper"><img src="bild4.jpg" alt="Bild 5" loading="lazy" /></div>
-  <div class="image-wrapper"><img src="bild5.jpg" alt="Bild 6" loading="lazy" /></div>
-  <div class="image-wrapper"><img src="bild6.jpg" alt="Bild 7" loading="lazy" /></div>
-  <div class="image-wrapper"><img src="bild7.jpg" alt="Bild 8" loading="lazy" /></div>
-  <div class="image-wrapper"><img src="bild8.jpg" alt="Bild 9" loading="lazy" /></div>
-  <div class="image-wrapper"><img src="bild9.jpg" alt="Bild 10" loading="lazy" /></div>
-  <div class="image-wrapper"><img src="bild10.jpg" alt="Bild 11" loading="lazy" /></div>
-  <div class="image-wrapper"><img src="bild11.jpg" alt="Bild 12" loading="lazy" /></div>
-  <div class="image-wrapper"><img src="bild12.jpg" alt="Bild 13" loading="lazy" /></div>
-  <div class="image-wrapper"><img src="bild13.jpg" alt="Bild 14" loading="lazy" /></div>
-  <div class="image-wrapper"><img src="bild14.jpg" alt="Bild 15" loading="lazy" /></div>
-  <div class="image-wrapper"><img src="bild15.jpg" alt="Bild 16" loading="lazy" /></div>
-  <div class="image-wrapper"><img src="bild16.jpg" alt="Bild 17" loading="lazy" /></div>
+  <div class="text">
+    <h1>Über Jonas</h1>
+    <p>Ich bin Jonas Kellhammer, leidenschaftlicher Fotograf und Filmemacher. Seit 2021 arbeite ich unter dem Namen BREWMOTION an visuellen Projekten, die durch Ästhetik, Bewegung und Emotion überzeugen. Ich erzähle Geschichten mit Licht und Linse, ob Standbild oder Film – immer ausdrucksstark und individuell.</p>
+  </div>
+  <div class="img-wrapper">
+    <img src="bild101.jpeg" alt="Jonas Kellhammer" />
+    <div class="instagram-button">
+      <a href="https://instagram.com/jonasdirect" target="_blank" rel="noopener noreferrer">instagram</a>
+    </div>
+  </div>
 </main>
-
-<footer>
-  <a href="https://instagram.com/jonasdirect" target="_blank" rel="noopener noreferrer">instagram</a>
-</footer>
 
 </body>
 </html>
