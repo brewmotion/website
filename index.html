@@ -12,6 +12,7 @@
       background: #f8f9fa;
       color: #1a1a1a;
     }
+
     header {
       background: rgba(255 255 255 / 0.3);
       backdrop-filter: blur(12px);
@@ -22,33 +23,45 @@
       position: sticky;
       top: 0;
       z-index: 1000;
+      height: 64px; /* fixe Höhe für Referenz */
     }
 
-    /* Gemeinsamer Glasrahmen-Hover-Effekt */
     .nav-item {
       position: relative;
-      padding: 0.6rem 1rem;
-      border-radius: 9999px;
+      padding: 0.5rem 1rem;
+      border-radius: 12px;
       text-decoration: none;
       color: #1a1a1a;
       font-weight: 600;
       transition: all 0.3s ease;
-      display: inline-block;
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
+
+    .nav-item::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: 12px;
+      background: transparent;
+      border: 2px solid transparent;
+      z-index: -1;
+      transition: all 0.3s ease;
     }
 
     .nav-item:hover::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border-radius: 9999px;
-      background: rgba(173, 142, 110, 0.2); /* helleres Mokka */
-      border: 2px solid rgba(173, 142, 110, 0.5);
+      background: rgba(173, 142, 110, 0.15);
+      border-color: rgba(173, 142, 110, 0.4);
       backdrop-filter: blur(8px);
-      z-index: -1;
     }
 
     nav a {
       margin: 0 0.5rem;
+      height: 100%;
     }
 
     main {
