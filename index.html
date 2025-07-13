@@ -11,6 +11,7 @@
       font-family: 'Inter', sans-serif;
       background: #f8f9fa;
       color: #1a1a1a;
+      overflow-x: hidden;
     }
     header {
       background: rgba(255, 255, 255, 0.3);
@@ -33,34 +34,116 @@
     nav a:hover {
       color: #007aff;
     }
-    @media (max-width: 600px) {
+    main {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+    }
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      flex: 1 1 calc(25% - 1rem);
+      max-width: calc(25% - 1rem);
+      min-width: 200px;
+      border-radius: 16px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      filter: brightness(0.9);
+    }
+    .gallery-item img {
+      width: 100%;
+      display: block;
+      border-radius: 16px;
+      filter: blur(8px) brightness(0.8);
+      transition: filter 0.5s ease;
+    }
+    .gallery-item:hover img {
+      filter: blur(0) brightness(1);
+    }
+    .instagram-footer {
+      position: fixed;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(12px);
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+      font-weight: 600;
+      color: #1a1a1a;
+      cursor: pointer;
+      user-select: none;
+      font-family: 'Inter', sans-serif;
+      transition: background-color 0.3s ease;
+      text-decoration: none;
+    }
+    .instagram-footer:hover {
+      background: rgba(0, 122, 255, 0.2);
+      color: #007aff;
+    }
+
+    @media (max-width: 900px) {
+      .gallery-item {
+        flex: 1 1 calc(50% - 1rem);
+        max-width: calc(50% - 1rem);
+      }
+    }
+    @media (max-width: 480px) {
+      .gallery-item {
+        flex: 1 1 100%;
+        max-width: 100%;
+      }
       header {
         flex-direction: column;
         gap: 0.5rem;
+        padding: 1rem;
       }
       nav a {
         margin: 0 0.5rem;
       }
     }
-    /* Hier kannst du deinen bisherigen Style für die Hauptseite ergänzen */
   </style>
 </head>
 <body>
+  <header>
+    <div><strong>BREWMOTION</strong></div>
+    <nav>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#film">Film</a>
+      <a href="#kunden">Kunden</a>
+      <a href="about.html">Über mich</a>
+      <a href="kontakt.html">Kontakt</a>
+    </nav>
+  </header>
 
-<header>
-  <div><strong>BREWMOTION</strong></div>
-  <nav>
-    <a href="index.html#portfolio">Portfolio</a>
-    <a href="index.html#film">Film</a>
-    <a href="index.html#kunden">Kunden</a>
-    <a href="about.html">Über mich</a>
-    <a href="kontakt.html">Kontakt</a>
-  </nav>
-</header>
+  <main>
+    <section id="portfolio" class="gallery">
+      <div class="gallery-item"><img src="DSC00627_fast EXPORT.jpg" alt="Bild 0" loading="lazy" /></div>
+      <div class="gallery-item"><img src="bild1.jpg" alt="Bild 1" loading="lazy" /></div>
+      <div class="gallery-item"><img src="bild2.jpg" alt="Bild 2" loading="lazy" /></div>
+      <div class="gallery-item"><img src="bild3.jpg" alt="Bild 3" loading="lazy" /></div>
+      <div class="gallery-item"><img src="bild4.jpg" alt="Bild 4" loading="lazy" /></div>
+      <div class="gallery-item"><img src="bild5.jpg" alt="Bild 5" loading="lazy" /></div>
+      <div class="gallery-item"><img src="bild6.jpg" alt="Bild 6" loading="lazy" /></div>
+      <div class="gallery-item"><img src="bild7.jpg" alt="Bild 7" loading="lazy" /></div>
+      <div class="gallery-item"><img src="bild8.jpg" alt="Bild 8" loading="lazy" /></div>
+      <div class="gallery-item"><img src="bild9.jpg" alt="Bild 9" loading="lazy" /></div>
+      <div class="gallery-item"><img src="bild10.jpg" alt="Bild 10" loading="lazy" /></div>
+      <div class="gallery-item"><img src="bild11.jpg" alt="Bild 11" loading="lazy" /></div>
+      <div class="gallery-item"><img src="bild12.jpg" alt="Bild 12" loading="lazy" /></div>
+      <div class="gallery-item"><img src="bild13.jpg" alt="Bild 13" loading="lazy" /></div>
+      <div class="gallery-item"><img src="bild14.jpg" alt="Bild 14" loading="lazy" /></div>
+      <div class="gallery-item"><img src="bild15.jpg" alt="Bild 15" loading="lazy" /></div>
+      <div class="gallery-item"><img src="bild16.jpg" alt="Bild 16" loading="lazy" /></div>
+    </section>
+  </main>
 
-<!-- Hier kommt der restliche Hauptseiten-Content -->
-
+  <a href="https://instagram.com/jonasdirect" target="_blank" rel="noopener" class="instagram-footer">instagram</a>
 </body>
 </html>
-
-
