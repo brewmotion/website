@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Was ist BREWMOTION? – BREWMOTION</title>
+<title>BREWMOTION – Portfolio</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
 <style>
   body {
@@ -11,9 +11,6 @@
     font-family: 'Inter', sans-serif;
     background: #f8f9fa;
     color: #1a1a1a;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
   }
   header {
     background: rgba(255 255 255 / 0.3);
@@ -37,30 +34,81 @@
     color: #007aff;
   }
   main {
-    flex: 1;
-    max-width: 900px;
-    margin: 3rem auto;
-    padding: 0 1rem;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
   }
   h1 {
+    margin-bottom: 2rem;
     font-weight: 700;
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    text-align: center;
+    font-size: 2rem;
   }
-  p {
-    font-size: 1.2rem;
-    line-height: 1.6;
-    max-width: 720px;
-    margin: 0 auto;
-    text-align: center;
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    gap: 1.5rem;
   }
+  .gallery img {
+    width: 100%;
+    border-radius: 16px;
+    filter: brightness(0.7);
+    transition: filter 0.4s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  /* Overlay */
+  .gallery img::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    border-radius: 16px;
+    background: rgba(255 255 255 / 0.5);
+    pointer-events: none;
+    transition: background 0.4s ease;
+    z-index: 1;
+  }
+  /* Hover auf Desktop */
+  @media (hover: hover) and (pointer: fine) {
+    .gallery img:hover {
+      filter: brightness(1);
+    }
+    .gallery img:hover::before {
+      background: radial-gradient(circle 150px at center, rgba(255 255 255 / 0) 0%, rgba(255 255 255 / 0.5) 100%);
+    }
+  }
+
+  /* Mobile: Scroll-triggered Effekte */
+  @media (max-width: 768px) {
+    .gallery img {
+      filter: brightness(0.7);
+    }
+    .gallery img::before {
+      background: rgba(255 255 255 / 0.5);
+      transition: background 0.6s ease;
+    }
+    .gallery img.visible::before {
+      background: rgba(255 255 255 / 0);
+    }
+    .gallery img.visible {
+      filter: brightness(1);
+    }
+  }
+
   footer {
     text-align: center;
     padding: 1rem 0;
+    position: fixed;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
     background: rgba(255 255 255 / 0.3);
     backdrop-filter: blur(12px);
+    border-radius: 24px;
+    width: 150px;
     font-weight: 600;
+    cursor: pointer;
+    z-index: 1000;
   }
   footer a {
     color: #1a1a1a;
@@ -70,26 +118,65 @@
 </head>
 <body>
 <header>
-  <div><strong><a href="brewmotion.html" style="color:#1a1a1a; text-decoration:none;">BREWMOTION</a></strong></div>
+  <div><strong>BREWMOTION</strong></div>
   <nav>
-    <a href="index.html">Startseite</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#film">Film</a>
+    <a href="#kunden">Kunden</a>
     <a href="about.html">Über mich</a>
-    <a href="brewmotion.html">Was ist BREWMOTION?</a>
     <a href="kontakt.html">Kontakt</a>
   </nav>
 </header>
 
 <main>
-  <h1>Was ist BREWMOTION?</h1>
-  <p>
-    BREWMOTION ist das kreative Projekt von Jonas Kellhammer – einem Fotografen und Filmemacher, der durch seine Arbeit Geschichten mit Bewegung, Licht und Emotionen erzählt. Der Name steht für den fließenden Prozess, Bilder und Filme lebendig und atmosphärisch zu gestalten – stets mit einem Fokus auf Ästhetik und Authentizität.<br><br>
-    BREWMOTION verbindet Technik, Leidenschaft und künstlerischen Anspruch, um visuelle Projekte entstehen zu lassen, die beeindrucken und berühren. Ob Fotoshootings, Filmproduktionen oder kreative Konzepte – BREWMOTION steht für bewegende Momente in bewegten Bildern.
-  </p>
+  <h1 id="portfolio">Portfolio</h1>
+  <div class="gallery">
+    <img src="DSC00627_fast EXPORT.jpg" alt="Portfolio Bild 1" />
+    <img src="bild1.jpg" alt="Portfolio Bild 2" />
+    <img src="bild2.jpg" alt="Portfolio Bild 3" />
+    <img src="bild3.jpg" alt="Portfolio Bild 4" />
+    <img src="bild4.jpg" alt="Portfolio Bild 5" />
+    <img src="bild5.jpg" alt="Portfolio Bild 6" />
+    <img src="bild6.jpg" alt="Portfolio Bild 7" />
+    <img src="bild7.jpg" alt="Portfolio Bild 8" />
+    <img src="bild8.jpg" alt="Portfolio Bild 9" />
+    <img src="bild9.jpg" alt="Portfolio Bild 10" />
+    <img src="bild10.jpg" alt="Portfolio Bild 11" />
+    <img src="bild11.jpg" alt="Portfolio Bild 12" />
+    <img src="bild12.jpg" alt="Portfolio Bild 13" />
+    <img src="bild13.jpg" alt="Portfolio Bild 14" />
+    <img src="bild14.jpg" alt="Portfolio Bild 15" />
+    <img src="bild15.jpg" alt="Portfolio Bild 16" />
+    <img src="bild16.jpg" alt="Portfolio Bild 17" />
+  </div>
 </main>
 
 <footer>
   <a href="https://instagram.com/jonasdirect" target="_blank" rel="noopener noreferrer">instagram</a>
 </footer>
+
+<script>
+  // Scroll triggered effect for mobile images
+  function isInViewport(el) {
+    const rect = el.getBoundingClientRect();
+    return (
+      rect.top >= 0 &&
+      rect.bottom <= (window.innerHeight || document.documentElement.clientHeight)
+    );
+  }
+  function checkVisibility() {
+    document.querySelectorAll('.gallery img').forEach(img => {
+      if (isInViewport(img)) {
+        img.classList.add('visible');
+      } else {
+        img.classList.remove('visible');
+      }
+    });
+  }
+  window.addEventListener('scroll', checkVisibility);
+  window.addEventListener('resize', checkVisibility);
+  window.addEventListener('load', checkVisibility);
+</script>
 
 </body>
 </html>
