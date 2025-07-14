@@ -3,54 +3,151 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>BREWMOTION – Kontakt</title>
-  <!-- Gleiche Styles wie in about.html – du kannst den Head dort 1:1 kopieren -->
-  <!-- ... (gleicher <style> wie oben) -->
+  <title>Kontakt – BREWMOTION</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: #E6E6E6; /* korrigierte Hintergrundfarbe */
+      color: #1a1a1a;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background: rgba(255 255 255 / 0.3);
+      backdrop-filter: blur(12px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header a {
+      text-decoration: none;
+      color: #1a1a1a;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    header a:hover {
+      color: #a97454;
+    }
+
+    nav a {
+      margin: 0 1rem;
+    }
+
+    main {
+      flex: 1;
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .text {
+      flex: 1;
+      font-size: 1.1rem;
+      line-height: 1.5;
+    }
+
+    .text h1 {
+      margin-bottom: 1rem;
+      font-weight: 700;
+      font-size: 2rem;
+    }
+
+    .img-wrapper {
+      flex-shrink: 0;
+      max-width: 300px;
+      position: relative;
+    }
+
+    .img-wrapper img {
+      width: 100%;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      filter: none; /* kein Helligkeitseffekt */
+      transition: none;
+    }
+
+    /* Instagram Button unter dem Bild */
+    .instagram-button {
+      position: absolute;
+      bottom: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255 255 255 / 0.3);
+      backdrop-filter: blur(12px);
+      border-radius: 9999px;
+      padding: 0.4rem 1rem;
+      font-weight: 600;
+      font-size: 1rem;
+      color: #1a1a1a;
+      text-decoration: none;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    .instagram-button:hover {
+      background: #a97454;
+      color: white;
+    }
+
+    @media (max-width: 768px) {
+      main {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .img-wrapper {
+        margin-top: 1.5rem;
+        max-width: 90vw;
+      }
+
+      .instagram-button {
+        position: static;
+        transform: none;
+        margin-top: 1rem;
+        display: inline-block;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<header>
-  <div><strong><a href="brewmotion.html">BREWMOTION</a></strong></div>
-  <nav>
-    <div class="hamburger" id="hamburger" aria-label="Menü öffnen" role="button" tabindex="0">
-      <div></div>
-      <div></div>
-      <div></div>
+  <header>
+    <div><strong><a href="brewmotion.html">BREWMOTION</a></strong></div>
+    <nav>
+      <a href="https://brewmotion.github.io/website/portfolio.html">Portfolio</a>
+      <a href="https://brewmotion.github.io/website/Film.html">Film</a>
+      <a href="https://brewmotion.github.io/website/Kunden.html">Kunden</a>
+      <a href="about.html">Über mich</a>
+      <a href="kontakt.html">Kontakt</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="text">
+      <h1>Kontakt</h1>
+      <p>Du möchtest mit mir zusammenarbeiten oder hast Fragen zu einem Projekt? Melde dich gerne direkt bei mir:</p>
+      <p style="margin-top: 1rem; font-weight: bold;">
+        <a href="mailto:mail.kellhammer@gmail.com" style="color: #1a1a1a; text-decoration: none;">mail.kellhammer@gmail.com</a>
+      </p>
     </div>
-    <ul id="menu">
-      <li><a href="brewmotion.html#portfolio">Portfolio</a></li>
-      <li><a href="brewmotion.html#film">Film</a></li>
-      <li><a href="brewmotion.html#kunden">Kunden</a></li>
-      <li><a href="about.html">Über mich</a></li>
-      <li><a href="kontakt.html">Kontakt</a></li>
-    </ul>
-  </nav>
-</header>
-
-<main>
-  <h1>Kontakt</h1>
-  <p>Du möchtest ein Projekt starten oder hast Fragen? Schreib mir gerne eine Nachricht oder kontaktiere mich direkt über Instagram!</p>
-</main>
-
-<footer>
-  <a href="https://instagram.com/jonasdirect" target="_blank" rel="noopener noreferrer">instagram</a>
-</footer>
-
-<script>
-  const hamburger = document.getElementById('hamburger');
-  const menu = document.getElementById('menu');
-
-  hamburger.addEventListener('click', () => {
-    menu.classList.toggle('open');
-  });
-
-  hamburger.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      menu.classList.toggle('open');
-    }
-  });
-</script>
+    <div class="img-wrapper">
+      <img src="bild102.jpeg" alt="Jonas Kellhammer Kontakt" />
+      <a href="https://instagram.com/jonasdirect" target="_blank" rel="noopener noreferrer" class="instagram-button">instagram</a>
+    </div>
+  </main>
 
 </body>
 </html>
